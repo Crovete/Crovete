@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>Crovete — Custom T-Shirts</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#050505;color:#f5f5f5;font-family:Inter,Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+button,input{font:inherit}
+.page{width:min(700px,100%);margin:auto;padding:18px 16px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:6px 2px 30px}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1.3px}
+.top-note{font-size:10px;color:#666;letter-spacing:1px}
+.hero{text-align:center;padding:22px 4px 35px}
+.badge{display:inline-block;border:1px solid #333;border-radius:999px;padding:8px 14px;color:#aaa;font-size:12px}
+.hero h1{font-size:clamp(43px,11vw,69px);line-height:.94;letter-spacing:-3.4px;margin:22px 0 15px}
+.hero p{margin:0;color:#888;font-size:16px}
+.card{border:1px solid #2d2d2d;background:#151515;border-radius:22px;padding:20px;margin:13px 0}
+.step{font-size:10px;font-weight:900;letter-spacing:1.4px;color:#777;margin-bottom:8px}
+.title{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.sub{font-size:13px;color:#777;margin:5px 0 17px;line-height:1.45}
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.type{border:1px solid #383838;background:#0d0d0d;border-radius:17px;padding:17px;cursor:pointer}
+.type.active{border-color:#fff;background:#111}
+.type-name{font-size:17px;font-weight:800;margin-bottom:12px}
+.line{display:flex;justify-content:space-between;padding:4px 0;font-size:13px;color:#888}
+.line b{color:#eee}
+.qty-row{display:flex;gap:9px;margin-top:12px}
+.choice{border:1px solid #414141;background:#0d0d0d;color:#eee;border-radius:13px;padding:12px 18px;min-width:68px;cursor:pointer;text-align:center}
+.choice.active{background:#fff;color:#000;border-color:#fff}
+.design{border:1px solid #303030;background:#0e0e0e;border-radius:18px;padding:17px;margin-top:12px}
+.design-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.design-title{font-weight:800}
+.design-no{color:#666;font-size:10px;letter-spacing:1px}
+.upload{display:block;border:1px dashed #555;border-radius:15px;padding:22px 14px;text-align:center;cursor:pointer}
+.upload strong{display:block;margin-bottom:5px}
+.upload small{color:#666}
+.file{display:none}
+.preview{display:none;width:100%;max-height:240px;object-fit:contain;background:#080808;border-radius:13px;margin-top:12px}
+.filename{font-size:11px;color:#777;margin-top:7px;word-break:break-all}
+.options-label{font-size:10px;color:#666;letter-spacing:.8px;margin:15px 0 8px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.color-choice{border:1px solid #333;background:#0d0d0d;color:#999;border-radius:12px;padding:8px 4px;cursor:pointer;text-align:center;font-size:10px}
+.color-choice.active{border-color:#fff;color:#fff;background:#161616}
+.swatch{display:block;width:34px;height:34px;border-radius:50%;margin:0 auto 6px;border:2px solid transparent}
+.color-choice.active .swatch{border-color:#fff;box-shadow:0 0 0 2px #777}
+.c-black{background:#050505}.c-white{background:#fff}.c-beige{background:#cdbb9b}.c-red{background:#8d2424}.c-blue{background:#2d487d}.c-green{background:#56694f}.c-yellow{background:#b79b36}
+.originals{border-top:1px solid #303030;margin-top:17px;padding-top:15px}.originals-title{font-size:11px;font-weight:800;letter-spacing:.8px;color:#aaa;margin-bottom:9px}.original-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #222}.original-name{font-size:11px;color:#888;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.download-original{border:1px solid #444;background:#0d0d0d;color:#eee;border-radius:9px;padding:7px 10px;font-size:10px;cursor:pointer;white-space:nowrap}.summary{border-top:1px solid #303030;margin-top:17px;padding-top:15px}
+.summary-row{display:flex;justify-content:space-between;font-size:12px;color:#888;padding:3px 0}
+.summary-row b{color:#eee}
+.total{display:flex;justify-content:space-between;border-top:1px solid #303030;margin-top:12px;padding-top:15px;font-weight:800;font-size:18px}
+.total span:last-child{font-size:21px}
+.send{width:100%;border:0;border-radius:17px;background:#fff;color:#000;padding:18px;font-size:17px;font-weight:850;cursor:pointer;margin-top:16px}
+.send:disabled{opacity:.3;cursor:not-allowed}
+.hint{text-align:center;color:#666;font-size:11px;line-height:1.5;margin:10px 4px 0}
+.status{text-align:center;color:#888;font-size:12px;min-height:18px;margin-top:9px}
+@media(max-width:500px){
+.page{padding-left:14px;padding-right:14px}
+.type-grid{grid-template-columns:1fr}
+.color-grid{grid-template-columns:repeat(4,1fr)}
+.card{padding:18px}
+.hero h1{letter-spacing:-2.8px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="top">
+  <div class="logo">CROVETE</div>
+  <div class="top-note">CUSTOM T-SHIRTS</div>
+</header>
+
+<section class="hero">
+  <div class="badge">Made for your idea.</div>
+  <h1>Fully Customized<br>as you wish.</h1>
+  <p>Choose quantity. Upload a design for each T-shirt.</p>
+</section>
+
+<section class="card">
+  <div class="step">STEP 1</div>
+  <div class="title">Select type & quantity</div>
+  <div class="sub">Every T-shirt can have a different design, size and color.</div>
+
+  <div class="type-grid" id="types">
+    <div class="type" data-type="Regular">
+      <div class="type-name">Regular</div>
+      <div class="line"><span>1 T-shirt</span><b>₹599</b></div>
+      <div class="line"><span>2 T-shirts</span><b>₹998</b></div>
+      <div class="line"><span>3 T-shirts</span><b>₹1,347</b></div>
+    </div>
+    <div class="type" data-type="Kids">
+      <div class="type-name">Kids</div><div class="line"><span>1 T-shirt</span><b>₹499</b></div><div class="line"><span>2 T-shirts</span><b>₹799</b></div><div class="line"><span>3 T-shirts</span><b>₹999</b></div></div>
+    <div class="type" data-type="Oversized">
+      <div class="type-name">Oversized</div>
+      <div class="line"><span>1 T-shirt</span><b>₹899</b></div>
+      <div class="line"><span>2 T-shirts</span><b>₹1,499</b></div>
+      <div class="line"><span>3 T-shirts</span><b>₹1,799</b></div>
+    </div>
+  </div>
+
+  <div class="options-label">QUANTITY</div>
+  <div class="qty-row" id="qty">
+    <button type="button" class="choice" data-value="1">1</button>
+    <button type="button" class="choice" data-value="2">2</button>
+    <button type="button" class="choice" data-value="3">3</button>
+  </div>
+</section>
+
+<section class="card" id="designSection" style="display:none">
+  <div class="step">STEP 2</div>
+  <div class="title">Customize each T-shirt</div>
+  <div class="sub">Your original files are kept untouched for printing. WhatsApp gets a separate order sheet copy.</div>
+  <div id="designs"></div>
+
+  <div class="originals" id="originals"></div>
+  <div class="summary" id="summary"></div>
+  <div class="total"><span>Total</span><span id="total">—</span></div>
+</section>
+
+<button class="send" id="send" type="button" disabled>Send to WhatsApp - 9356259467</button>
+<div class="status" id="status"></div>
+<div class="hint">WhatsApp gets 4 images: all original print files + 1 order summary image. The original files are never modified.</div>
+</main>
+
+<canvas id="labelCanvas" style="display:none"></canvas>
+
+<script>
+const prices={Regular:{1:599,2:998,3:1347},Oversized:{1:899,2:1499,3:1799},Kids:{1:499,2:799,3:999}};
+let type="",qty=0,items=[];
+
+const $=id=>document.getElementById(id);
+
+function makeItem(){return{file:null,originalFile:null,size:"",color:"",previewUrl:""}}
+
+function colorButton(name,cls){
+  return `<button type="button" class="color-choice" data-value="${name}">
+    <span class="swatch ${cls}"></span>${name}
+  </button>`;
+}
+
+function selectChoice(parent,el){
+  parent.querySelectorAll(".choice").forEach(x=>x.classList.remove("active"));
+  el.classList.add("active");
+}
+
+async function makeLabeledFile(file,index,size,color){
+  const img=new Image();
+  const url=URL.createObjectURL(file);
+  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+
+  const max=1600;
+  const scale=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
+  const w=Math.max(1,Math.round(img.naturalWidth*scale));
+  const h=Math.max(1,Math.round(img.naturalHeight*scale));
+  const bar=Math.max(72,Math.round(w*.075));
+
+  const canvas=$("labelCanvas");
+  canvas.width=w;canvas.height=h+bar;
+  const ctx=canvas.getContext("2d");
+  ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h+bar);
+  ctx.drawImage(img,0,0,w,h);
+
+  ctx.fillStyle="#050505";
+  ctx.font=`800 ${Math.max(22,Math.round(w*.027))}px Arial`;
+  ctx.textBaseline="middle";
+  ctx.fillText(`CROVETE  •  T-SHIRT ${index+1}  •  ${size}  •  ${color}`,Math.round(w*.035),h+bar/2);
+
+  URL.revokeObjectURL(url);
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.92));
+  return new File([blob],`Crovete_Tshirt_${index+1}.jpg`,{type:"image/jpeg"});
+}
+
+async function updateLabeled(i){
+  if(!items[i].originalFile||!items[i].size||!items[i].color)return;
+  try{items[i].file=await makeLabeledFile(items[i].originalFile,i,items[i].size,items[i].color)}
+  catch(e){items[i].file=items[i].originalFile}
+}
+
+
+function getSizeButtons(){
+ const sizes=(type==="Kids")?["0-2","2-4","4-6","6-8","8-10","10-12","12-14"]:["XS","S","M","L","XL","XXL","XXXL"];
+ return sizes.map(s=>`<button type="button" class="choice" data-value="${s}">${s}</button>`).join("");
+}
+
+function renderDesigns(){
+  $("designs").innerHTML="";
+  items=Array.from({length:qty},makeItem);
+
+  for(let i=0;i<qty;i++){
+    const d=document.createElement("div");
+    d.className="design";
+    d.innerHTML=`
+      <div class="design-head">
+        <div class="design-title">T-shirt ${i+1}</div>
+        <div class="design-no">DESIGN ${i+1}</div>
+      </div>
+
+      <label class="upload" for="file${i}">
+        <strong>＋ Upload Design ${i+1}</strong>
+        <small>JPG, PNG or WEBP</small>
+      </label>
+      <input class="file" id="file${i}" type="file" accept="image/jpeg,image/png,image/webp,image/*">
+
+      <img class="preview" id="preview${i}" alt="Design ${i+1}">
+      <div class="filename" id="name${i}"></div>
+
+      <div class="options-label">SIZE</div>
+      <div class="row sizes">${getSizeButtons()}</div>
+
+      <div class="options-label">COLOR</div>
+      <div class="color-grid colors">
+        ${colorButton("Black","c-black")}
+        ${colorButton("White","c-white")}
+        ${colorButton("Beige","c-beige")}
+        ${colorButton("Red","c-red")}
+        ${colorButton("Blue","c-blue")}
+        ${colorButton("Green","c-green")}
+        ${colorButton("Yellow","c-yellow")}
+      </div>
+    `;
+    $("designs").appendChild(d);
+
+    $(`file${i}`).addEventListener("change",e=>{
+      const f=e.target.files?.[0];if(!f)return;
+      items[i].originalFile=f;items[i].file=f;
+      items[i].previewUrl=URL.createObjectURL(f);
+      $(`preview${i}`).src=items[i].previewUrl;
+      $(`preview${i}`).style.display="block";
+      $(`name${i}`).textContent=`T-shirt ${i+1} • ${f.name}`;
+      refresh();
+    });
+
+    d.querySelectorAll(".sizes .choice").forEach(b=>b.onclick=async()=>{
+      selectChoice(d.querySelector(".sizes"),b);
+      items[i].size=b.dataset.value;
+      await updateLabeled(i);refresh();
+    });
+
+    d.querySelectorAll(".color-choice").forEach(b=>b.onclick=async()=>{
+      d.querySelectorAll(".color-choice").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+      items[i].color=b.dataset.value;
+      await updateLabeled(i);refresh();
+    });
+  }
+
+  $("designSection").style.display="block";
+  refresh();
+}
+
+
+function renderOriginals(){
+  const box=$("originals");
+  if(!items.length){box.innerHTML="";return;}
+  box.innerHTML=`<div class="originals-title">ORIGINAL PRINT FILES — NEVER MODIFIED</div>`+
+    items.map((x,i)=>x.originalFile?`
+      <div class="original-item">
+        <div class="original-name">T-shirt ${i+1} • ${x.originalFile.name}</div>
+        <button type="button" class="download-original" data-i="${i}">Save original</button>
+      </div>`:`<div class="original-item"><div class="original-name">T-shirt ${i+1} • upload pending</div></div>`).join("");
+  box.querySelectorAll(".download-original").forEach(b=>b.onclick=()=>{
+    const i=Number(b.dataset.i),f=items[i].originalFile;
+    if(!f)return;
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(f);
+    a.download=`Crovete_Tshirt_${i+1}_ORIGINAL_${f.name}`;
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  });
+}
+
+function refresh(){
+  renderOriginals();
+  $("total").textContent=type&&qty?`₹${prices[type][qty].toLocaleString("en-IN")}`:"—";
+
+  if(items.length){
+    $("summary").innerHTML=items.map((x,i)=>`
+      <div class="summary-row">
+        <span>T-shirt ${i+1}</span>
+        <b>${x.size||"Size —"} • ${x.color||"Color —"} • ${x.file?"Design ready":"Design —"}</b>
+      </div>`).join("");
+  }else $("summary").innerHTML="";
+
+  $("send").disabled=!(type&&qty&&items.length===qty&&items.every(x=>x.file&&x.size&&x.color));
+}
+
+$("types").querySelectorAll(".type").forEach(c=>c.onclick=()=>{
+  $("types").querySelectorAll(".type").forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");
+  type=c.dataset.type;
+  if(qty)renderDesigns();
+  else refresh();
+});
+
+$("qty").querySelectorAll(".choice").forEach(b=>b.onclick=()=>{
+  selectChoice($("qty"),b);
+  qty=Number(b.dataset.value);
+  if(type)renderDesigns();
+  else{$("status").textContent="Select Regular or Oversized first.";refresh()}
+});
+
+
+async function makeOrderSheet(){
+  const loaded=[];
+  for(let i=0;i<items.length;i++){
+    const file=items[i].file;
+    const url=URL.createObjectURL(file);
+    const img=new Image();
+    await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;img.src=url});
+    loaded.push({img,url,item:items[i],index:i});
+  }
+
+  const W=1200, cardW=1100, pad=50, headerH=180, cardH=620, gap=35;
+  const H=headerH + pad + loaded.length*cardH + (loaded.length-1)*gap + pad;
+  const c=document.createElement("canvas"); c.width=W; c.height=H;
+  const ctx=c.getContext("2d");
+  ctx.fillStyle="#f4f4f4";ctx.fillRect(0,0,W,H);
+
+  ctx.fillStyle="#050505";
+  ctx.font="900 54px Arial";
+  ctx.fillText("CROVETE",pad,75);
+  ctx.font="600 28px Arial";
+  ctx.fillText(`${type} • ${qty} T-SHIRTS • ₹${prices[type][qty].toLocaleString("en-IN")}`,pad,125);
+
+  loaded.forEach((x,i)=>{
+    const y=headerH+pad+i*(cardH+gap);
+    ctx.fillStyle="#fff";ctx.fillRect(pad,y,cardW,cardH);
+    ctx.strokeStyle="#d0d0d0";ctx.lineWidth=2;ctx.strokeRect(pad,y,cardW,cardH);
+
+    const infoH=105, imgX=pad+25, imgY=y+infoH+20, imgW=cardW-50, imgH=cardH-infoH-45;
+    const ratio=Math.min(imgW/x.img.naturalWidth,imgH/x.img.naturalHeight);
+    const dw=x.img.naturalWidth*ratio, dh=x.img.naturalHeight*ratio;
+    ctx.fillStyle="#111";
+    ctx.font="900 30px Arial";
+    ctx.fillText(`T-SHIRT ${i+1}`,imgX,y+48);
+    ctx.font="700 24px Arial";
+    ctx.fillText(`${x.item.size}  •  ${x.item.color}`,imgX,y+83);
+
+    ctx.fillStyle="#fafafa";ctx.fillRect(imgX,imgY,imgW,imgH);
+    ctx.drawImage(x.img,imgX+(imgW-dw)/2,imgY+(imgH-dh)/2,dw,dh);
+    URL.revokeObjectURL(x.url);
+  });
+
+  const blob=await new Promise(resolve=>c.toBlob(resolve,"image/jpeg",.9));
+  return new File([blob],`Crovete_Order_${Date.now()}.jpg`,{type:"image/jpeg"});
+}
+
+$("send").onclick=async()=>{
+  if($("send").disabled)return;
+
+  $("status").textContent="Preparing 4 WhatsApp images…";
+
+  try{
+    // IMPORTANT:
+    // originals are the exact customer files, untouched.
+    // orderSheet is a separate generated summary image.
+    const orderSheet=await makeOrderSheet();
+    const originalFiles=items.map(x=>x.originalFile);
+    const allFiles=[...originalFiles,orderSheet];
+
+    const caption=
+`CROVETE CUSTOM ORDER
+
+Type: ${type}
+Quantity: ${qty}
+Total: ₹${prices[type][qty].toLocaleString("en-IN")}
+
+${items.map((x,i)=>`T-shirt ${i+1}: ${x.size} • ${x.color}`).join("\n")}
+
+ORDER IMAGE: The 4th image is the order summary.
+ORIGINAL IMAGES: The first ${qty} images are the exact customer files for printing.
+
+Please confirm the order.`;
+
+    if(navigator.share && navigator.canShare && navigator.canShare({files:allFiles})){
+      // Browser cannot force a specific WhatsApp recipient from the share API.
+      // Share all 4 files together; the user selects WhatsApp and the recipient.
+      await navigator.share({
+        title:"Crovete Custom T-shirt Order",
+        text:caption,
+        files:allFiles
+      });
+      $("status").textContent="";
+      return;
+    }
+
+    // Fallback opens the exact Crovete WhatsApp number with the order text.
+    // Browser security does not allow attaching local files through wa.me.
+    const phone="919356259467";
+    window.open(
+      "https://wa.me/"+phone+"?text="+encodeURIComponent(caption),
+      "_blank","noopener"
+    );
+    $("status").textContent="WhatsApp opened for Crovete. Attach the 4 images.";
+  }catch(e){
+    if(e.name==="AbortError"){$("status").textContent="";return}
+    $("status").textContent="Could not prepare the 4 images. Please try again.";
+  }
+};
+
+refresh();
+</script>
+</body>
+</html>
