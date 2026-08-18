@@ -2035,6 +2035,260 @@ button,.btn{
 }
 </style>
 
+
+<style id="premium-gold-checkout-theme">
+/* =========================================================
+   PREMIUM GOLD CHECKOUT THEME
+   Volume Pricing + Order Summary + WhatsApp
+   ========================================================= */
+
+/* VOLUME PRICING */
+.volume-pricing{
+  background:#17130d !important;
+  border:1px solid #4b3a1b !important;
+  border-radius:14px !important;
+  box-shadow:0 12px 30px rgba(72,49,10,.10) !important;
+}
+.volume-pricing .vp-head{
+  background:linear-gradient(135deg,#f4d477,#d9aa43) !important;
+  border:0 !important;
+  color:#241b0b !important;
+  padding:16px 20px !important;
+}
+.volume-pricing .vp-title{
+  color:#241b0b !important;
+  font-weight:800 !important;
+}
+.volume-pricing .vp-subtitle{
+  color:#604a1e !important;
+}
+.volume-pricing .vp-grid{
+  background:#17130d !important;
+}
+.volume-pricing .vp-tier{
+  border-right:1px solid #3b301c !important;
+  background:#17130d !important;
+}
+.volume-pricing .vp-tier strong{
+  color:#f4d477 !important;
+}
+.volume-pricing .vp-tier span{
+  color:#b9aa8c !important;
+}
+.volume-pricing .vp-best{
+  background:#211a0f !important;
+}
+.volume-pricing .vp-best em{
+  background:#f4d477 !important;
+  color:#241b0b !important;
+  border-radius:999px !important;
+  padding:6px 9px !important;
+}
+
+/* ORDER SUMMARY */
+.cart #priceBox{
+  background:#fff !important;
+  border:1px solid #e2d5b9 !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  box-shadow:0 7px 22px rgba(72,49,10,.07) !important;
+}
+.cart #priceBox .sumtop{
+  background:#241b0b !important;
+  padding:16px 18px !important;
+}
+.cart #priceBox .sumtop small{
+  color:#b9aa8c !important;
+  font-weight:700 !important;
+}
+.cart #priceBox .sumtop b{
+  color:#f4d477 !important;
+  font-size:21px !important;
+}
+.cart #priceBox .total{
+  background:#fffaf0 !important;
+  padding:17px 18px !important;
+}
+.cart #priceBox .total small{
+  color:#8a795b !important;
+  font-weight:700 !important;
+}
+.cart #priceBox .total strong{
+  color:#241b0b !important;
+  font-size:31px !important;
+}
+.cart #priceBox .deal{
+  background:#f4d477 !important;
+  color:#241b0b !important;
+  min-height:60px !important;
+  padding:14px 17px !important;
+}
+.cart #priceBox .deal .sub{
+  color:#665022 !important;
+}
+
+/* WHATSAPP CTA */
+.cart .wa{
+  position:relative !important;
+  height:56px !important;
+  margin-top:15px !important;
+  border-radius:10px !important;
+  background:#1fba58 !important;
+  color:#fff !important;
+  font:800 14px "Space Grotesk",Arial,sans-serif !important;
+  letter-spacing:.01em !important;
+  box-shadow:0 7px 18px rgba(31,186,88,.20) !important;
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease !important;
+}
+.cart .wa:hover{
+  background:#159447 !important;
+  box-shadow:0 9px 22px rgba(31,186,88,.28) !important;
+  transform:translateY(-1px) !important;
+}
+.cart .wa:active{
+  transform:translateY(0) scale(.99) !important;
+}
+
+/* Small reassurance below WhatsApp */
+.cart .order-note{
+  color:#8a795b !important;
+  font-size:9px !important;
+}
+
+/* Mobile */
+@media(max-width:650px){
+  .volume-pricing{
+    border-radius:12px !important;
+  }
+  .volume-pricing .vp-head{
+    padding:14px 15px !important;
+  }
+  .cart #priceBox .sumtop{
+    padding:14px 15px !important;
+  }
+  .cart #priceBox .total{
+    padding:15px !important;
+  }
+  .cart .wa{
+    height:54px !important;
+  }
+}
+</style>
+
+<style id="all-gold-order-summary">
+.cart #priceBox{
+background:linear-gradient(145deg,#f8e4a1 0%,#d9ae4b 52%,#b98220 100%) !important;
+border:1px solid #c59a3c !important;border-radius:13px !important;overflow:hidden !important;
+box-shadow:0 10px 26px rgba(150,105,24,.18) !important;
+}
+.cart #priceBox::before{
+content:"PRICE LOCKED TO YOUR QUANTITY";display:block;background:#241b0b;color:#f4d477;
+padding:8px 18px;font:700 8px "Space Grotesk",Arial,sans-serif;letter-spacing:.13em;
+}
+.cart #priceBox .sumtop{background:transparent !important;color:#241b0b !important;padding:16px 18px !important;border-bottom:1px solid rgba(76,51,10,.2) !important}
+.cart #priceBox .sumtop small{color:#604a1e !important;font-weight:800 !important}
+.cart #priceBox .sumtop b{color:#241b0b !important;font-size:22px !important;font-weight:800 !important}
+.cart #priceBox .total{background:rgba(255,250,235,.72) !important;color:#241b0b !important;padding:17px 18px !important;border-bottom:1px solid rgba(76,51,10,.16) !important}
+.cart #priceBox .total small{color:#725a2a !important;font-weight:800 !important}
+.cart #priceBox .total strong{color:#241b0b !important;font-size:32px !important;font-weight:800 !important}
+.cart #priceBox .deal{background:#241b0b !important;color:#f8e4a1 !important;min-height:61px !important;padding:14px 17px !important;border:0 !important;font-weight:800 !important}
+.cart #priceBox .deal .price{color:#f8e4a1 !important}
+.cart #priceBox .deal .sub{color:#c9b88e !important}
+@media(max-width:650px){
+.cart #priceBox{border-radius:11px !important}
+.cart #priceBox .sumtop{padding:14px 15px !important}
+.cart #priceBox .total{padding:15px !important}
+.cart #priceBox .total strong{font-size:29px !important}
+.cart #priceBox::before{padding:7px 15px !important;font-size:7px !important}
+}
+</style>
+<style id="ORDER-SUMMARY-GOLD-FINAL">
+.cart #priceBox{background:#D4AF37!important;background-image:linear-gradient(135deg,#F7E7A8 0%,#D4AF37 45%,#B8860B 100%)!important;border:2px solid #A67C00!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 10px 30px rgba(166,124,0,.28)!important;color:#241b0b!important}
+.cart #priceBox::before{display:block!important;content:"ORDER SUMMARY"!important;background:#3A2908!important;color:#F9E7A3!important;padding:11px 17px!important;font:800 10px "Space Grotesk",Arial,sans-serif!important;letter-spacing:.16em!important}
+.cart #priceBox .sumtop{background:transparent!important;color:#241b0b!important;padding:17px 18px!important;border-bottom:1px solid rgba(58,41,8,.22)!important}
+.cart #priceBox .sumtop small{color:#60480D!important;font-weight:800!important}
+.cart #priceBox .sumtop b{color:#241b0b!important;font-weight:900!important;font-size:23px!important}
+.cart #priceBox .total{background:#FFF8DF!important;color:#241b0b!important;padding:18px!important;border-bottom:1px solid #D8BD72!important}
+.cart #priceBox .total small{color:#725A22!important;font-weight:900!important}
+.cart #priceBox .total strong{color:#241b0b!important;font-size:34px!important;font-weight:900!important}
+.cart #priceBox .deal{background:#3A2908!important;color:#FFE9A0!important;padding:15px 18px!important;min-height:62px!important;border:0!important;font-weight:900!important}
+.cart #priceBox .deal .price{color:#FFE9A0!important;font-weight:900!important}
+.cart #priceBox .deal .sub{color:#DCC98E!important}
+@media(max-width:650px){.cart #priceBox{border-radius:14px!important}.cart #priceBox::before{padding:9px 15px!important;font-size:9px!important}.cart #priceBox .sumtop{padding:15px!important}.cart #priceBox .total{padding:16px 15px!important}}
+</style>
+
+<style id="gold-fixed-real-selectors">
+/* REAL Order Summary selectors — this is the actual component structure */
+#priceBox{
+  background:linear-gradient(135deg,#F8E8AE 0%,#D4AF37 48%,#B8860B 100%) !important;
+  border:2px solid #A67C00 !important;
+  border-radius:16px !important;
+  overflow:hidden !important;
+  box-shadow:0 12px 32px rgba(166,124,0,.25) !important;
+}
+#priceBox::before{
+  content:"ORDER SUMMARY" !important;
+  display:block !important;
+  background:#3A2908 !important;
+  color:#F9E7A3 !important;
+  padding:11px 17px !important;
+  font:800 10px "Space Grotesk",Arial,sans-serif !important;
+  letter-spacing:.16em !important;
+}
+#priceBox .summary-top{
+  background:transparent !important;
+  padding:18px !important;
+  border-bottom:1px solid rgba(58,41,8,.22) !important;
+}
+#priceBox .summary-label{
+  color:#60480D !important;
+  font:800 10px "Space Grotesk",Arial,sans-serif !important;
+  letter-spacing:.14em !important;
+}
+#priceBox #unitPrice{
+  color:#241B0B !important;
+  font:900 23px "Space Grotesk",Arial,sans-serif !important;
+}
+#priceBox .summary-total{
+  background:#FFF8DF !important;
+  padding:19px 18px !important;
+  border-bottom:1px solid #D8BD72 !important;
+}
+#priceBox .summary-total small{
+  color:#725A22 !important;
+  font:800 9px "Space Grotesk",Arial,sans-serif !important;
+  letter-spacing:.13em !important;
+}
+#priceBox #totalAmount{
+  color:#241B0B !important;
+  font:900 34px "Space Grotesk",Arial,sans-serif !important;
+}
+#priceBox #priceMessage{
+  background:#3A2908 !important;
+  color:#FFE9A0 !important;
+  padding:16px 18px !important;
+  min-height:62px !important;
+}
+#priceBox #priceMessage .deal-more{
+  color:#FFE9A0 !important;
+  font:900 13px "Space Grotesk",Arial,sans-serif !important;
+}
+#priceBox #priceMessage .deal-price{
+  color:#F8E4A1 !important;
+  font-weight:900 !important;
+}
+#priceBox #priceMessage .deal-sub{
+  color:#DCC98E !important;
+  font-size:10px !important;
+}
+@media(max-width:650px){
+  #priceBox{border-radius:14px !important}
+  #priceBox .summary-top{padding:15px !important}
+  #priceBox .summary-total{padding:16px 15px !important}
+  #priceBox #totalAmount{font-size:29px !important}
+}
+</style>
+
 </body>
 </html>
 
