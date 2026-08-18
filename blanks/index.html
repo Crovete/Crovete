@@ -1811,6 +1811,230 @@ button,.btn{
 }
 </style>
 
+
+<style id="golden-cart-design">
+/* ===== GOLDEN CART PANEL ===== */
+.cart{
+  position:relative !important;
+  overflow:hidden !important;
+  background:#171719 !important;
+  color:#fff !important;
+  border:1px solid #2a2928 !important;
+  border-radius:16px !important;
+  padding:18px !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.14) !important;
+}
+
+/* Gold header badge / hero */
+.cart h2{
+  position:relative !important;
+  display:block !important;
+  margin:0 0 14px !important;
+  padding:16px 17px 15px !important;
+  border-radius:12px !important;
+  background:linear-gradient(135deg,#f4d477 0%,#d8a52f 52%,#b87a18 100%) !important;
+  color:#17120a !important;
+  font:750 25px "Space Grotesk","Inter",Arial,sans-serif !important;
+  letter-spacing:-.05em !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 7px 20px rgba(216,165,47,.18) !important;
+}
+.cart h2::after{
+  content:"YOUR ORDER" !important;
+  position:absolute !important;
+  right:14px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  height:25px !important;
+  padding:0 9px !important;
+  border-radius:999px !important;
+  background:rgba(23,18,10,.16) !important;
+  color:#3b290b !important;
+  font:750 8px "Space Grotesk",Arial,sans-serif !important;
+  letter-spacing:.09em !important;
+}
+
+/* Cart item becomes a clean dark detail row */
+.item{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:8px 0 !important;
+  padding:12px 12px 12px 14px !important;
+  background:#222224 !important;
+  border:1px solid #333235 !important;
+  border-radius:11px !important;
+  color:#fff !important;
+  box-shadow:none !important;
+}
+.item:hover{
+  background:#272729 !important;
+  border-color:#454348 !important;
+  transform:none !important;
+}
+.item::before{
+  width:3px !important;
+  top:11px !important;
+  bottom:11px !important;
+  background:#d8ff3f !important;
+}
+
+/* Details: not three floating badges; one connected information line */
+.cart-badge-row{
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+  min-width:0 !important;
+  overflow:hidden !important;
+}
+.cart-color-badge{
+  min-width:0 !important;
+  max-width:150px !important;
+  min-height:32px !important;
+  padding:0 10px 0 9px !important;
+  border:0 !important;
+  border-radius:7px 0 0 7px !important;
+  background:#303033 !important;
+  color:#fff !important;
+  font:700 10px "Space Grotesk",Arial,sans-serif !important;
+  box-shadow:none !important;
+}
+.cart-color-dot{
+  width:9px !important;
+  height:9px !important;
+  margin-right:6px !important;
+}
+.cart-size-badge{
+  height:32px !important;
+  min-width:48px !important;
+  padding:0 9px !important;
+  border:0 !important;
+  border-left:1px solid #48474a !important;
+  border-radius:0 !important;
+  background:#303033 !important;
+  color:#d8ff3f !important;
+  font:750 10px "Space Grotesk",Arial,sans-serif !important;
+  box-shadow:none !important;
+}
+.cart-qty-badge{
+  height:32px !important;
+  min-width:54px !important;
+  padding:0 9px !important;
+  border:0 !important;
+  border-left:1px solid rgba(255,255,255,.12) !important;
+  border-radius:0 7px 7px 0 !important;
+  background:#3a393c !important;
+  color:#fff !important;
+  font:700 9px "Space Grotesk",Arial,sans-serif !important;
+  box-shadow:none !important;
+}
+.cart-qty-badge b{
+  color:#fff !important;
+  font-size:13px !important;
+}
+
+/* Remove stays quiet */
+.item .remove{
+  width:29px !important;
+  height:29px !important;
+  padding:0 !important;
+  border:1px solid #444348 !important;
+  border-radius:50% !important;
+  background:transparent !important;
+  color:#99969a !important;
+  font-size:0 !important;
+}
+.item .remove::before,
+.item .remove::after{
+  background:#99969a !important;
+}
+.item .remove:hover{
+  background:#342523 !important;
+  border-color:#ff5b3f !important;
+}
+.item .remove:hover::before,
+.item .remove:hover::after{
+  background:#ff5b3f !important;
+}
+
+/* Summary above cart list gets a subtle divider */
+.cart #priceBox{
+  margin-bottom:17px !important;
+  border:1px solid #302f31 !important;
+}
+.cart h2 + #cartItems{
+  margin-top:0 !important;
+}
+
+/* WhatsApp button remains the clear final action */
+.cart .wa{
+  background:#d8ff3f !important;
+  color:#111 !important;
+  box-shadow:none !important;
+  font-weight:800 !important;
+}
+.cart .wa:hover{
+  background:#25d366 !important;
+  color:#fff !important;
+}
+
+/* Mobile */
+@media(max-width:650px){
+  .cart{
+    padding:13px !important;
+    border-radius:14px !important;
+  }
+  .cart h2{
+    padding:14px 14px !important;
+    font-size:23px !important;
+    border-radius:11px !important;
+  }
+  .cart h2::after{
+    right:11px !important;
+    height:22px !important;
+    padding:0 7px !important;
+    font-size:7px !important;
+  }
+  .item{
+    padding:10px 9px 10px 12px !important;
+  }
+  .cart-color-badge{
+    max-width:125px !important;
+    font-size:9px !important;
+  }
+  .cart-size-badge{min-width:45px !important;font-size:9px !important}
+  .cart-qty-badge{min-width:50px !important;font-size:8px !important}
+}
+</style>
+
+
+<style id="light-cart-details">
+/* Lighter connected detail strip for maximum text clarity */
+.cart-color-badge{
+  background:#f5efe0 !important;
+  color:#2a2418 !important;
+  border:0 !important;
+  border-radius:7px 0 0 7px !important;
+}
+.cart-size-badge{
+  background:#eee5cf !important;
+  color:#4a3819 !important;
+  border-left:1px solid #d8c9a9 !important;
+}
+.cart-qty-badge{
+  background:#d8c08a !important;
+  color:#241d11 !important;
+  border-left:1px solid #c6ab70 !important;
+  border-radius:0 7px 7px 0 !important;
+}
+.cart-qty-badge b{
+  color:#17130d !important;
+}
+</style>
+
 </body>
 </html>
 
