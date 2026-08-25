@@ -106,11 +106,18 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
   box-shadow:0 10px 28px rgba(246,181,27,.22); transition:.2s;
 }
 .order-btn:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(246,181,27,.3); }
+.pay-btn { text-decoration:none; display:flex; align-items:center; justify-content:center; flex:1; min-width:220px; border:1px solid rgba(36,210,123,.5); border-radius:16px; padding:17px 22px; font:900 18px Outfit; color:#06130d; cursor:pointer; background:linear-gradient(135deg,#75f3ae,#24d27b); box-shadow:0 10px 28px rgba(36,210,123,.18); transition:.2s; }
+.pay-btn:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(36,210,123,.28); }
+
 .reset-btn {
   border:1px solid #343434; background:#121212; color:#ddd; padding:16px 20px;
   border-radius:16px; cursor:pointer; font:700 14px Outfit;
 }
 .note { color:#8e8e8e; font-size:12px; margin-top:12px; }
+.pay-btn { flex:1; min-width:240px; border:0; border-radius:16px; padding:17px 22px; font:900 18px Outfit; color:#fff; cursor:pointer; background:linear-gradient(135deg,#24d27b,#129b58); box-shadow:0 10px 28px rgba(36,210,123,.22); transition:.2s; }
+.pay-btn:hover { transform:translateY(-2px); }
+.flow-status { margin-top:14px; display:flex; align-items:center; gap:9px; color:#d8ffe9; background:rgba(36,210,123,.08); border:1px solid rgba(36,210,123,.22); border-radius:14px; padding:12px 14px; font-size:13px; font-weight:700; }
+.flow-dot { display:grid; place-items:center; width:24px; height:24px; border-radius:50%; background:#24d27b; color:#06140c; font-weight:900; }
 
 .showcase { margin:20px auto 65px; }
 .showcase-head { text-align:center; margin-bottom:18px; }
@@ -126,93 +133,126 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
 .footer {
   border-top:1px solid #1d1d1d; padding:28px 0 38px; text-align:center; color:#777; font-size:13px;
 }
-.offer-banner {
-  margin: 8px auto 30px;
-  max-width: 1000px;
-  padding: 28px 26px;
-  text-align:center;
-  border:1px solid rgba(246,181,27,.38);
-  border-radius:26px;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(246,181,27,.18), transparent 48%),
-    linear-gradient(145deg,#17130a,#0d0d0d 58%,#15110a);
-  box-shadow:0 20px 55px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.06);
-  position:relative;
-  overflow:hidden;
-}
-.offer-banner:before {
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.07) 50%,transparent 80%);
-  transform:translateX(-100%);
-  animation:offerShine 4s ease-in-out infinite;
-}
-.offer-kicker {
-  position:relative;
-  display:inline-block;
-  color:#080808;
-  background:linear-gradient(135deg,#ffe56b,#f6b51b);
-  padding:7px 16px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:2.5px;
-}
-.offer-price {
-  position:relative;
-  margin:14px 0 16px;
-  font-size:clamp(28px,5vw,48px);
-  font-weight:900;
-  letter-spacing:-1.5px;
-}
-.strike {
-  color:#888;
-  text-decoration:line-through;
-  text-decoration-thickness:3px;
-  text-decoration-color:#ff6262;
-  margin-right:10px;
-}
-.only {
-  color:#ffe067;
-  font-size:.55em;
-  letter-spacing:2px;
-  vertical-align:middle;
-}
-.offer-grid {
-  position:relative;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+.footer strong { color:#ddd; }
+.wa { color:#24d27b; font-weight:800; }
+
+
+.flow-step {
+  width:100%;
+  display:flex;
+  align-items:center;
   gap:12px;
+  padding:13px 15px;
+  margin-bottom:10px;
+  border:1px solid rgba(246,181,27,.18);
+  border-radius:14px;
+  background:rgba(246,181,27,.055);
 }
-.offer-card {
-  padding:16px 14px;
-  border-radius:17px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.09);
-}
-.offer-card strong {
-  display:block;
-  font-size:14px;
-  line-height:1.25;
-  letter-spacing:.4px;
-}
-.offer-card span {
-  display:block;
-  margin-top:6px;
-  color:#ffe067;
-  font-size:18px;
+.flow-number {
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffe067,#f6b51b);
+  color:#080808;
   font-weight:900;
 }
-@keyframes offerShine {
-  0%,55%,100% { transform:translateX(-100%); }
-  75% { transform:translateX(100%); }
+.flow-step strong { display:block; font-size:14px; }
+.flow-step small { display:block; color:#999; margin-top:2px; }
+.pay-btn, .whatsapp-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-width:0;
+  text-decoration:none;
+  text-align:center;
+}
+.pay-btn {
+  margin-bottom:14px;
+}
+.whatsapp-step {
+  margin-top:2px;
+}
+.whatsapp-btn {
+  background:linear-gradient(135deg,#27e67f,#18b866);
+  color:#06140c;
+  box-shadow:0 10px 28px rgba(36,210,123,.18);
+}
+.whatsapp-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 15px 35px rgba(36,210,123,.26);
 }
 
-@media (max-width:560px) {
-  .offer-banner { padding:22px 14px; border-radius:22px; }
-  .offer-grid { grid-template-columns:1fr; }
-  .offer-card span { font-size:17px; }
+
+.screenshot-box {
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px;
+  margin:12px 0 10px;
+  border:1px dashed rgba(36,210,123,.45);
+  border-radius:14px;
+  background:rgba(36,210,123,.055);
+  cursor:pointer;
 }
+.screenshot-icon {
+  font-size:24px;
+}
+.screenshot-box strong { display:block; font-size:14px; }
+.screenshot-box small { display:block; color:#999; margin-top:3px; }
+
+
+.upi-detail {
+  display:block;
+  width:100%;
+  margin-top:-6px;
+  margin-bottom:10px;
+  text-align:center;
+  color:#aaa;
+  font-size:12px;
+  font-weight:600;
+}
+
+
+.pay-btn.locked, .whatsapp-btn.locked {
+  opacity:.45;
+  cursor:not-allowed;
+  filter:grayscale(.25);
+}
+.pay-btn:not(.locked) {
+  opacity:1;
+  cursor:pointer;
+}
+.screenshot-box {
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px;
+  margin:10px 0 14px;
+  border:1px dashed rgba(36,210,123,.45);
+  border-radius:14px;
+  background:rgba(36,210,123,.055);
+  cursor:pointer;
+}
+.screenshot-icon { font-size:24px; }
+.screenshot-box strong { display:block; font-size:14px; }
+.screenshot-box small { display:block; color:#999; margin-top:3px; }
+
+
+.payment-ocr-area { width:100%; }
+.screenshot-box {
+  width:100%; display:flex; align-items:center; gap:12px;
+  padding:15px; margin:10px 0 8px; border:1px dashed rgba(36,210,123,.45);
+  border-radius:14px; background:rgba(36,210,123,.055); cursor:pointer;
+}
+.screenshot-icon { font-size:24px; }
+.screenshot-box strong { display:block; font-size:14px; }
+.screenshot-box small { display:block; color:#999; margin-top:3px; }
 
 @media (max-width:850px) {
   .products { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -231,6 +271,7 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
   .showcase { margin-bottom:40px; }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 </head>
 <body>
 
@@ -249,23 +290,8 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
     <div class="chips">
       <div class="chip">Premium Fabric</div>
       <div class="chip">Everyday Comfort</div>
-      <div class="chip">Fast Delivered</div>
-      <div class="chip">Good For Gifting</div>
-    </div>
-  </section>
-
-  <section class="offer-banner" aria-label="Today's offer">
-    <div class="offer-kicker">TODAY'S OFFER</div>
-    <div class="offer-price"><span class="strike">₹1999</span> <span class="only">NOW</span></div>
-    <div class="offer-grid">
-      <div class="offer-card">
-        <strong>4 PREMIUM COTTON T-SHIRTS</strong>
-        <span>@ ₹1099 ONLY</span>
-      </div>
-      <div class="offer-card">
-        <strong>3 PREMIUM OVERSIZED T-SHIRTS</strong>
-        <span>@ ₹1099 ONLY</span>
-      </div>
+      <div class="chip">Fast Ordering</div>
+      <div class="chip">Easy Returns</div>
     </div>
   </section>
 
@@ -286,10 +312,55 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
     <div id="productArea" class="products"></div>
 
     <div id="ctaArea" class="cta hidden">
-      <button class="order-btn" id="orderBtn">🛒 ORDER INSTANTLY ON WHATSAPP</button>
+      <div class="flow-step">
+        <span class="flow-number">1</span>
+        <div>
+          <strong>PAY ₹1099</strong>
+          <small>UPI: sanikaagurjar-1@okaxis</small>
+        </div>
+      </div>
+
+      <a class="order-btn pay-btn locked" id="payBtn"
+         href="upi://pay?pa=sanikaagurjar-1@okaxis&pn=Payment&am=1099&cu=INR"
+         aria-disabled="true">
+        💳 PAY NOW — ₹1099
+      </a>
+
+      <div class="flow-step">
+        <span class="flow-number">2</span>
+        <div>
+          <strong>ATTACH PAYMENT SCREENSHOT</strong>
+          <small>Required after payment</small>
+        </div>
+      </div>
+
+      <label class="screenshot-box" for="paymentScreenshot">
+        <span class="screenshot-icon">📎</span>
+        <span>
+          <strong>Choose Payment Screenshot</strong>
+          <small id="screenshotLabel">No screenshot attached</small>
+        </span>
+      </label>
+      <input id="paymentScreenshot" type="file" accept="image/*" class="hidden">
+      <div id="ocrStatus" class="note"></div>
+
+      <div class="flow-step">
+        <span class="flow-number">3</span>
+        <div>
+          <strong>PLACE ORDER</strong>
+          <small>Send all T-shirt details to WhatsApp</small>
+        </div>
+      </div>
+
+      <button class="order-btn whatsapp-btn locked" id="orderBtn" type="button" disabled>
+        📲 PLACE ORDER ON WHATSAPP
+      </button>
+
       <button class="reset-btn" id="resetBtn" type="button">Reset</button>
     </div>
-    <div id="note" class="note hidden">Your selected T-shirt details will be added automatically to the WhatsApp message.</div>
+    <div id="note" class="note hidden">
+      Select all sizes and colors first. Then pay ₹1099, attach the payment screenshot, and place your order on WhatsApp.
+    </div>
   </section>
 
   <section class="showcase">
@@ -310,120 +381,114 @@ select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(246,181,27,.0
 </footer>
 
 <script>
-const regularColors = [
-  "Charcoal Grey","White","Black","Sky Blue","Sage Green",
-  "Olive Green","Forest Green","Mocha Brown","Dusty Pink","Wine Red"
-];
+const regularColors=["Charcoal Grey","White","Black","Sky Blue","Sage Green","Olive Green","Forest Green","Mocha Brown","Dusty Pink","Wine Red"];
+const oversizedColors=["Black","White","Light Grey","Beige","Brown","Navy Blue","Olive Green","Forest Green","Sky Blue","Dusty Pink"];
+const sizes=["S","M","L","XL","XXL"];
+const WHATSAPP_NUMBER = '918349102399';
+const UPI_URL="upi://pay?pa=sanikaagurjar-1@okaxis&pn=Payment&am=1099&cu=INR";
+const typeSelect=document.getElementById("typeSelect"), productArea=document.getElementById("productArea"), ctaArea=document.getElementById("ctaArea"), note=document.getElementById("note");
+const payBtn=document.getElementById("payBtn"), paymentScreenshot=document.getElementById("paymentScreenshot"), screenshotLabel=document.getElementById("screenshotLabel"), orderBtn=document.getElementById("orderBtn"), resetBtn=document.getElementById("resetBtn");
+const regularPoster=document.getElementById("regularPoster"), oversizedPoster=document.getElementById("oversizedPoster"), showcaseTitle=document.getElementById("showcaseTitle"), showcaseText=document.getElementById("showcaseText");
+function optionList(values,placeholder){return `<option value="">${placeholder}</option>`+values.map(v=>`<option value="${v}">${v}</option>`).join("");}
+function selectionsComplete(){const selects=[...productArea.querySelectorAll("select")];return selects.length>0&&selects.every(s=>s.value);}
+function resetFlowState(){payBtn.classList.add("locked");payBtn.setAttribute("aria-disabled","true");orderBtn.disabled=true;orderBtn.classList.add("locked");paymentScreenshot.value="";screenshotLabel.textContent="No screenshot attached";screenshotLabel.style.color="";}
+function renderProducts(type){
+ const count=type==="regular"?4:3, colors=type==="regular"?regularColors:oversizedColors, label=type==="regular"?"REGULAR T-SHIRT":"OVERSIZED T-SHIRT";
+ productArea.innerHTML=Array.from({length:count},(_,i)=>`<div class="product"><div class="product-number">${String(i+1).padStart(2,"0")} • ${label}</div><div class="fields"><select class="size-select" aria-label="T-shirt ${i+1} size">${optionList(sizes,"Size")}</select><select class="color-select" aria-label="T-shirt ${i+1} color">${optionList(colors,"Color")}</select></div></div>`).join("");
+ ctaArea.classList.remove("hidden"); note.classList.remove("hidden"); resetFlowState();
+ if(type==="regular"){regularPoster.classList.remove("hidden");oversizedPoster.classList.add("hidden");showcaseTitle.textContent="Regular T-Shirts";showcaseText.textContent="10 colors • Pick any 4 • Regular fit";}
+ else{regularPoster.classList.add("hidden");oversizedPoster.classList.remove("hidden");showcaseTitle.textContent="Plain Oversized T-Shirts";showcaseText.textContent="10 colors • Pick any 3 • Oversized fit";}
+ document.getElementById("order").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function updateFlow(){const ready=selectionsComplete();payBtn.classList.toggle("locked",!ready);payBtn.setAttribute("aria-disabled",String(!ready));if(!ready){orderBtn.disabled=true;orderBtn.classList.add("locked");}}
+typeSelect.addEventListener("change",e=>{if(e.target.value) renderProducts(e.target.value); else {productArea.innerHTML="";ctaArea.classList.add("hidden");note.classList.add("hidden");regularPoster.classList.remove("hidden");oversizedPoster.classList.add("hidden");showcaseTitle.textContent="Explore Our Collection";showcaseText.textContent="Choose Regular or Oversized above to view the collection.";resetFlowState();}});
+productArea.addEventListener("change",updateFlow);
+payBtn.addEventListener("click",e=>{if(!selectionsComplete()){e.preventDefault();alert("Please select the size and color for every T-shirt first.");return;} e.currentTarget.href=UPI_URL;});
+paymentScreenshot.addEventListener("change",()=>{if(paymentScreenshot.files.length){screenshotLabel.textContent="✅ "+paymentScreenshot.files[0].name+" selected";screenshotLabel.style.color="#24d27b";orderBtn.disabled=false;orderBtn.classList.remove("locked");}else{resetFlowState();}});
+orderBtn.addEventListener('click', () => {
+    if (!paymentScreenshot.files || !paymentScreenshot.files.length) {
+      alert('Please attach your payment screenshot first.');
+      return;
+    }
 
-const oversizedColors = [
-  "Black","White","Light Grey","Beige","Brown",
-  "Navy Blue","Olive Green","Forest Green","Sky Blue","Dusty Pink"
-];
+    const selected = [];
+    const products = productArea.querySelectorAll('.product');
+    products.forEach((product, index) => {
+      const selects = product.querySelectorAll('select');
+      const size = selects[0]?.value || '';
+      const color = selects[1]?.value || '';
+      if (size && color) selected.push(`${index + 1} - ${size} ${color}`);
+    });
 
-const sizes = ["S","M","L","XL","XXL"];
-const typeSelect = document.getElementById("typeSelect");
-const productArea = document.getElementById("productArea");
-const ctaArea = document.getElementById("ctaArea");
-const note = document.getElementById("note");
-const regularPoster = document.getElementById("regularPoster");
-const oversizedPoster = document.getElementById("oversizedPoster");
-const showcaseTitle = document.getElementById("showcaseTitle");
-const showcaseText = document.getElementById("showcaseText");
+    let message = `🛍️ MOMOCLO TEES ORDER\n\n`;
+    message += selected.join('\n');
+    message += `\n\n💰 Payment: ₹1099`;
+    message += `\n👤 Sender: ${paymentOcr.senderName || 'Not clearly readable'}`;
+    message += `\n🔖 Transaction ID: ${paymentOcr.transactionId || 'Not clearly readable'}`;
+    message += `\n\nSorry, I am facing a problem attaching the payment screenshot. Sending it again below in WhatsApp.`;
 
-function optionList(values, placeholder) {
-  return `<option value="">${placeholder}</option>` +
-    values.map(v => `<option value="${v}">${v}</option>`).join("");
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  });
+resetBtn.addEventListener("click",()=>{typeSelect.value="";productArea.innerHTML="";ctaArea.classList.add("hidden");note.classList.add("hidden");resetFlowState();regularPoster.classList.remove("hidden");oversizedPoster.classList.add("hidden");showcaseTitle.textContent="Explore Our Collection";showcaseText.textContent="Choose Regular or Oversized above to view the collection.";window.scrollTo({top:0,behavior:"smooth"});});
+resetFlowState();
+
+// Optional OCR: if the library is available, read sender name and transaction ID.
+let paymentOcr = { senderName: '', transactionId: '' };
+const ocrStatus = document.getElementById('ocrStatus');
+function extractPaymentDetails(text) {
+  const clean = String(text || '').replace(/\r/g, '\n');
+  let transactionId = '';
+  const txn = clean.match(/(?:transaction\s*(?:id|no|number)|txn\s*(?:id|no)|utr\s*(?:no|number)?|upi\s*(?:ref(?:erence)?|transaction)\s*(?:no|number|id)?)[\s:#-]*([A-Z0-9]{6,30})/i);
+  if (txn) transactionId = txn[1].trim();
+  let senderName = '';
+  const nm = clean.match(/(?:paid\s*by|sender|debited\s*from|name)[\s:#-]*([A-Za-z][A-Za-z .'-]{2,50})/i);
+  if (nm) senderName = nm[1].trim();
+  return { senderName, transactionId };
 }
 
-function renderProducts(type) {
-  const count = type === "regular" ? 4 : 3;
-  const colors = type === "regular" ? regularColors : oversizedColors;
-  const label = type === "regular" ? "REGULAR T-SHIRT" : "OVERSIZED T-SHIRT";
+paymentScreenshot.addEventListener('change', async () => {
+  if (!paymentScreenshot.files.length) { resetFlowState(); return; }
+  screenshotLabel.textContent = 'Reading payment screenshot…';
+  orderBtn.disabled = false;
+  orderBtn.classList.remove('locked');
+  if (ocrStatus) { ocrStatus.textContent = 'Payment screenshot selected.'; ocrStatus.style.color = '#24d27b'; }
 
-  productArea.innerHTML = Array.from({length:count}, (_, i) => `
-    <div class="product">
-      <div class="product-number">${String(i+1).padStart(2,"0")} • ${label}</div>
-      <div class="fields">
-        <select class="size-select" aria-label="T-shirt ${i+1} size">
-          ${optionList(sizes, "Size")}
-        </select>
-        <select class="color-select" aria-label="T-shirt ${i+1} color">
-          ${optionList(colors, "Color")}
-        </select>
-      </div>
-    </div>
-  `).join("");
-
-  ctaArea.classList.remove("hidden");
-  note.classList.remove("hidden");
-
-  if (type === "regular") {
-    regularPoster.classList.remove("hidden");
-    oversizedPoster.classList.add("hidden");
-    showcaseTitle.textContent = "Regular T-Shirts";
-    showcaseText.textContent = "10 colors • Pick any 4 • Regular fit";
-  } else {
-    regularPoster.classList.add("hidden");
-    oversizedPoster.classList.remove("hidden");
-    showcaseTitle.textContent = "Plain Oversized T-Shirts";
-    showcaseText.textContent = "10 colors • Pick any 3 • Oversized fit";
-  }
-  document.getElementById("order").scrollIntoView({behavior:"smooth", block:"start"});
-}
-
-typeSelect.addEventListener("change", e => {
-  if (!e.target.value) {
-    productArea.innerHTML = "";
-    ctaArea.classList.add("hidden");
-    note.classList.add("hidden");
-    regularPoster.classList.remove("hidden");
-    oversizedPoster.classList.add("hidden");
-    showcaseTitle.textContent = "Explore Our Collection";
-    showcaseText.textContent = "Choose Regular or Oversized above to view the collection.";
+  // OCR is enhancement only; it must never break the order flow.
+  if (typeof Tesseract === 'undefined') {
+    screenshotLabel.textContent = '✅ Payment screenshot selected';
     return;
   }
-  renderProducts(e.target.value);
-});
-
-document.getElementById("orderBtn").addEventListener("click", () => {
-  const type = typeSelect.value;
-  if (!type) return;
-
-  const selects = [...productArea.querySelectorAll(".product")];
-  const expected = type === "regular" ? 4 : 3;
-  const items = selects.map((card, i) => {
-    const size = card.querySelector(".size-select").value;
-    const color = card.querySelector(".color-select").value;
-    return {i:i+1, size, color};
-  });
-
-  const incomplete = items.some(x => !x.size || !x.color);
-  if (incomplete) {
-    alert(`Please select size and color for all ${expected} T-shirts.`);
-    return;
+  try {
+    const result = await Tesseract.recognize(paymentScreenshot.files[0], 'eng');
+    paymentOcr = extractPaymentDetails(result.data.text);
+    const found=[];
+    if(paymentOcr.senderName) found.push('Sender: '+paymentOcr.senderName);
+    if(paymentOcr.transactionId) found.push('Transaction ID: '+paymentOcr.transactionId);
+    screenshotLabel.textContent = '✅ Payment screenshot selected';
+    if(ocrStatus) ocrStatus.textContent = found.length ? found.join(' • ') : 'Screenshot selected; details could not be read automatically.';
+  } catch (err) {
+    screenshotLabel.textContent = '✅ Payment screenshot selected';
+    if(ocrStatus) ocrStatus.textContent = 'Screenshot selected. Payment details will still be sent for verification.';
   }
-
-  const typeName = type === "regular" ? "Regular T-Shirts (Pick Any 4)" : "Oversized T-Shirts (Pick Any 3)";
-  let message = `Hello MoMoclo Tees! 👕%0A%0AI want to place an order.%0A%0A*T-Shirt Type:* ${typeName}%0A`;
-  items.forEach(x => {
-    message += `%0A*T-Shirt ${x.i}:* Size - ${x.size}, Color - ${x.color}`;
-  });
-  message += `%0A%0APlease confirm my order. Thank you!`;
-
-  window.open(`https://wa.me/918349102399?text=${message}`, "_blank");
 });
 
-document.getElementById("resetBtn").addEventListener("click", () => {
-  typeSelect.value = "";
-  productArea.innerHTML = "";
-  ctaArea.classList.add("hidden");
-  note.classList.add("hidden");
-  regularPoster.classList.remove("hidden");
-  oversizedPoster.classList.add("hidden");
-  showcaseTitle.textContent = "Explore Our Collection";
-  showcaseText.textContent = "Choose Regular or Oversized above to view the collection.";
-  window.scrollTo({top:0, behavior:"smooth"});
+orderBtn.addEventListener('click', () => {
+  if (!selectionsComplete()) { alert('Please select the size and color for every T-shirt first.'); return; }
+  if (!paymentScreenshot.files.length) { alert('Please attach your payment screenshot first.'); return; }
+  const typeName = typeSelect.value === 'regular' ? 'Regular T-Shirts (Pick Any 4)' : 'Oversized T-Shirts (Pick Any 3)';
+  const items = [...productArea.querySelectorAll('.product')].map((card,i) => ({i:i+1,size:card.querySelector('.size-select').value,color:card.querySelector('.color-select').value}));
+  let message = `Hello MoMoclo Tees! 👕\n\nI want to place an order.\n\n*T-Shirt Type:* ${typeName}\n`;
+  items.forEach(x => message += `\n*T-Shirt ${x.i}:* Size - ${x.size}, Color - ${x.color}`);
+  message += `\n\n*Offer Price:* ₹1099\n*UPI:* sanikaagurjar-1@okaxis`;
+  message += `\n\n*Payment Sender Name:* ${paymentOcr.senderName || 'Not readable'}`;
+  message += `\n*Transaction ID / UTR:* ${paymentOcr.transactionId || 'Not readable'}`;
+  message += `\n\nSorry, I am facing a problem attaching the payment screenshot. Sending it again below in WhatsApp.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
 });
+
 </script>
+
+
 </body>
 </html>
